@@ -1,6 +1,5 @@
 const $ = i => document.getElementById(i), WA = '51967629555';
 
-// Mapeo organizado con la carpeta 'img/' haciendo referencia al objeto correspondiente
 const IMG = {
     calcio: 'img/calcio.png',
     luz_ubv: 'img/luz_ubv.png',
@@ -114,6 +113,23 @@ if (rb) {
 setInterval(() => { if (!rp && !document.hidden) showR(ri + 1); }, 6500);
 setR(st);
 
+// Carrusel automático del Hero con texto dinámico sincronizado
+const carouselImages = document.querySelectorAll('.hero-carousel img.carousel-img');
+const badgeTextEl = document.getElementById('heroBadgeText');
+
+if (carouselImages.length > 0) {
+    let currentIdx = 0;
+    setInterval(() => {
+        carouselImages[currentIdx].classList.remove('active');
+        currentIdx = (currentIdx + 1) % carouselImages.length;
+        carouselImages[currentIdx].classList.add('active');
+        
+        if (badgeTextEl) {
+            badgeTextEl.innerHTML = carouselImages[currentIdx].getAttribute('data-texto');
+        }
+    }, 4000);
+}
+
 const FZ = [{
     n: 'Ratón adulto congelado',
     d: 'Ratones adultos de 28 a 32 g cada uno, listos para descongelar y ofrecer.',
@@ -185,12 +201,26 @@ if ($('wa3'))$('wa3').href = link('Hola REPER, quiero consultar por los producto
 if ($('wa0'))$('wa0').href = link('Hola REPER, quiero hacer un pedido');
 if ($('wa1'))$('wa1').href = link('Hola REPER, quiero hacer un pedido');
 if ($('wa2'))$('wa2').href = link('Hola REPER, quiero hacer un pedido');
+if ($('wa-float'))$('wa-float').href = link('Hola REPER, quiero hacer un pedido');
 
 const kEl = $('k');
 if (kEl) kEl.innerHTML = '<span class="flag"></span> Hecho en Perú';
 
+// Control de modo claro / oscuro
 function setTema(t) {
-    document.documentElement.setAttribute('data-tema', t || 'base');
+    document.documentElement.setAttribute('data-tema', t);
+    localStorage.setItem('reper_tema', t);
+    document.querySelectorAll('#sw button').forEach(b => b.classList.toggle('on', b.dataset.tema === t));
 }
-setTema('base');
+
+const sw = $('sw');
+if (sw) {
+    sw.onclick = e => {
+        const tema = e.target.dataset.tema;
+        if (tema) setTema(tema);
+    };
+}
+
+const savedTema = localStorage.getItem('reper_tema') || 'base';
+setTema(savedTema);
 draw();

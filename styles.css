@@ -1,13 +1,9 @@
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
 *,*::before,*::after{box-sizing:inherit}
 
 :root[data-tema=base]{--bg:#F2FAFA;--sf:#fff;--ink:#0A2D31;--mu:#4F6F73;--pr:#14868B;--ac:#E0650F;--ln:#D3E6E6;--on:#fff;--g1:#bfe6e7;--g2:#fbdcc6}
-@media(prefers-color-scheme:dark){:root[data-tema=base]{--bg:#0B1C1E;--sf:#122A2D;--ink:#E8F4F3;--mu:#9DB7B8;--pr:#2FB3B8;--ac:#E0650F;--ln:#24403F;--on:#06292b;--g1:#0f3b3e;--g2:#3a2314}}
-
-:root[data-tema=patrias]{--bg:#FFF6F5;--sf:#fff;--ink:#3A0A10;--mu:#7A4B50;--pr:#D91023;--ac:#9C0B1A;--ln:#F1D3D3;--on:#fff;--g1:#ffd3d3;--g2:#ffe9e9}
-:root[data-tema=halloween]{--bg:#150C1F;--sf:#201330;--ink:#F7EFFB;--mu:#BBA9CC;--pr:#FF7A1A;--ac:#A56BFF;--ln:#38254F;--on:#1a0d00;--g1:#3b1d63;--g2:#5a2a07}
-:root[data-tema=navidad]{--bg:#0F2A20;--sf:#15392B;--ink:#FDF6E6;--mu:#B8CDBF;--pr:#D7263D;--ac:#E8BE55;--ln:#2A5642;--on:#fff;--g1:#1d5a3f;--g2:#5a1620}
+:root[data-tema=dark]{--bg:#0B1C1E;--sf:#122A2D;--ink:#E8F4F3;--mu:#9DB7B8;--pr:#2FB3B8;--ac:#E0650F;--ln:#24403F;--on:#06292b;--g1:#0f3b3e;--g2:#3a2314}
 
 body{margin:0;font:400 16px/1.6 Figtree,system-ui,sans-serif;background:var(--bg);color:var(--ink);transition:background .4s,color .4s}
 h1,h2,h3,.pr{font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.08;margin:0;letter-spacing:-.02em}
@@ -17,9 +13,9 @@ a{color:inherit}.w{max-width:1120px;margin:auto;padding:0 20px}
 .bn{background:var(--pr);color:var(--on);text-align:center;font-size:.88rem;padding:8px 16px;font-weight:500}
 
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
-header .w{display:flex;align-items:center;gap:22px;height:64px}
 header .w{display:flex;align-items:center;gap:22px;height:84px}
 .lg{height:76px;width:auto;display:block}
+
 nav{margin-left:auto;display:flex;gap:22px;font-weight:500;font-size:.95rem}
 nav a{text-decoration:none;color:var(--mu)}
 nav a:hover{color:var(--ink)}
@@ -37,16 +33,32 @@ h1{font-size:clamp(2.3rem,5.4vw,4.2rem);font-weight:800}
 .bt{display:flex;gap:12px;flex-wrap:wrap}
 
 .ha{position:relative;aspect-ratio:1}
-.stg{position:absolute;inset:0;border-radius:32px;overflow:hidden;box-shadow:0 24px 60px -24px #0007}
-.stg svg{width:100%;height:100%;display:block}
-.sk circle{fill:color-mix(in srgb,var(--pr) 28%,var(--sf));stroke:var(--pr);stroke-width:1.5;stroke-opacity:.75}
-.fv{fill:var(--fc,var(--ac))}
-.fl{stroke:var(--ink);stroke-width:2;fill:none;opacity:.4}
-.fb{stroke:var(--sf);stroke-width:2;fill:none;opacity:.75;stroke-linecap:round}
-.hb{fill:color-mix(in srgb,var(--ac) 48%,var(--sf))}
-.rs ellipse{fill:none;stroke:var(--ink);stroke-width:7;stroke-dasharray:30 8;opacity:.55}
-.rs circle{fill:var(--ink);opacity:.55}
-.c2{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;bottom:24px;background:var(--ac);color:#fff;padding:10px 18px;border-radius:14px;font-weight:500;font-size:.92rem;box-shadow:0 10px 30px -10px #0006}
+
+/* Estilos del carrusel de imágenes del Hero */
+.hero-carousel {
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px -24px #0007;
+  background: var(--sf);
+}
+
+.hero-carousel img.carousel-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-carousel img.carousel-img.active {
+  opacity: 1;
+}
+
+.c2{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;bottom:24px;background:var(--ac);color:#fff;padding:10px 18px;border-radius:14px;font-weight:500;font-size:.92rem;box-shadow:0 10px 30px -10px #0006; z-index: 10;}
 .c2 b{font:800 1.5rem 'Bricolage Grotesque',sans-serif}
 
 section{padding:68px 0}
@@ -107,6 +119,26 @@ footer .w{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 
 .im{background:var(--sf);border:1px solid var(--ln);border-radius:24px;padding:32px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .im p{margin:0;color:var(--mu);max-width:36em}
+
+/* Botón flotante de WhatsApp */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #25d366;
+  color: #fff;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  z-index: 40;
+  transition: transform .2s ease;
+}
+.wa-float:hover {
+  transform: scale(1.1);
+}
 
 .sw{position:fixed;z-index:30;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;gap:4px;background:var(--sf);border:1px solid var(--ln);border-radius:99px;padding:5px;box-shadow:0 10px 30px -8px #0006}
 .sw button{border:0;background:none;border-radius:99px;padding:8px 12px;font:500 .85rem Figtree,sans-serif;color:var(--ink);cursor:pointer;display:flex;gap:6px;align-items:center}
