@@ -18,8 +18,8 @@ a{color:inherit}.w{max-width:1120px;margin:auto;padding:0 20px}
 
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
 header .w{display:flex;align-items:center;gap:22px;height:64px}
-.lg{height:52px;width:auto}#lc,#fl{display:block}
-
+header .w{display:flex;align-items:center;gap:22px;height:84px}
+.lg{height:76px;width:auto;display:block}
 nav{margin-left:auto;display:flex;gap:22px;font-weight:500;font-size:.95rem}
 nav a{text-decoration:none;color:var(--mu)}
 nav a:hover{color:var(--ink)}
