@@ -1,34 +1,36 @@
 /* ==========================================
-   REPER - Estilos Principales & Temas
+   REPER - Estilos Principales & Modo Claro/Oscuro
    ================================---------- */
 
 :root {
+  --bg-color: #0b1317;
+  --card-bg: #111f26;
+  --text-color: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-color: #1e333e;
+  --primary-color: #10b981;
+  --primary-hover: #059669;
+  --accent-color: #00d284;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] {
   --bg-color: #f8fafc;
-  --text-color: #1e293b;
   --card-bg: #ffffff;
+  --text-color: #1e293b;
+  --text-muted: #64748b;
   --border-color: #e2e8f0;
   --primary-color: #10b981;
   --primary-hover: #059669;
-  --text-muted: #64748b;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-[data-theme="dark"] {
-  --bg-color: #0f172a;
-  --text-color: #f1f5f9;
-  --card-bg: #1e293b;
-  --border-color: #334155;
-  --primary-color: #34d399;
-  --primary-hover: #10b981;
-  --text-muted: #94a3b8;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --accent-color: #059669;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -36,83 +38,213 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
 }
 
-/* Contenedor Principal Limpio (Sin barras molestas) */
+/* Barra de Navegación Superior */
+header {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+.wa-nav-btn {
+  background-color: var(--primary-color);
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+/* Contenedor Principal */
 .container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
 
-/* Botón de cambio de tema flotante superior */
-.theme-toggle-container {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1000;
+/* Controles Superiores (Tema y Admin) */
+.top-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.theme-btn {
+.ctrl-btn {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   color: var(--text-color);
   padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow);
+}
+
+.ctrl-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Selector de Fiestas / Temporadas estilo Píldora */
+.seasonal-pills {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 0.5rem 1.25rem;
   border-radius: 9999px;
   cursor: pointer;
-  box-shadow: var(--shadow);
-  font-weight: 600;
+  font-weight: 500;
 }
 
-.theme-btn:hover {
+.pill.active {
   background: var(--primary-color);
   color: white;
+  border-color: var(--primary-color);
 }
 
-/* Estilos de Tarjetas y Secciones */
-article, .fz, .card-section {
+/* Cuadrícula de Productos Original */
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.fz, .product-card {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 16px;
+  overflow: hidden;
   box-shadow: var(--shadow);
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
-h3 {
+.product-card img, .fz img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background-color: var(--border-color);
+}
+
+.fb {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.fb h3 {
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
   color: var(--text-color);
 }
 
-p, li {
+.fb p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.tr {
+  list-style: none;
+  margin: 0.5rem 0 1rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 0;
+}
+
+.tr li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding: 0.2rem 0;
   color: var(--text-muted);
 }
 
-/* Panel de Administración (Oculto por defecto) */
+.price-tag {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.btn-pedir {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+
+.btn-pedir:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Panel de Administración Oculto */
 #admin-panel {
   display: none;
   background: var(--card-bg);
   border: 2px dashed var(--primary-color);
-  padding: 1.5rem;
-  border-radius: 12px;
-  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-top: 3rem;
+  box-shadow: var(--shadow);
 }
 
 #admin-panel.active {
   display: block;
-}
-
-.admin-trigger-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  cursor: pointer;
-  margin-top: 2rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Botón Flotante de WhatsApp */
@@ -122,15 +254,15 @@ p, li {
   right: 2rem;
   background-color: #25d366;
   color: white;
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  z-index: 999;
+  font-size: 35px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
   text-decoration: none;
   transition: transform 0.3s ease;
 }
