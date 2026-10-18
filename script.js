@@ -1,30 +1,29 @@
 const $ = i => document.getElementById(i), WA = '51967629555';
 
 const IMG = {
-    logoc: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=',
     calcio: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=',
     ubv_gator: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=',
     mice: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII='
 };
 
 const PR = [
-    { n: 'Calcio', c: 'suplementos', t: 'El calcio mantiene huesos y caparazones fuertes y es clave para que las hembras formen huevos sanos.' },
-    { n: 'Luz UBV Tropical', c: 'luz', t: 'Los reptiles diurnos necesitan luz UVB para producir vitamina D3 y aprovechar el calcio. Dales su sol, incluso bajo techo.' },
-    { n: 'Foco cerámico', c: 'luz', t: 'Emite calor infrarrojo sin luz visible, ideal para mantener la temperatura del terrario también de noche.' },
-    { n: 'Cable térmico', c: 'luz', t: 'Calor desde el sustrato para crear una zona templada en el terrario, sin luz que moleste el descanso.' },
-    { n: 'Luz UVA', c: 'luz', t: 'Una lámpara halógena UVA crea la zona de asoleo, donde tu reptil o tortuga se calienta y se activa.' },
-    { n: 'Bombilla nocturna', c: 'luz', t: 'Con una bombilla nocturna das calor y puedes observar a tu reptil de noche sin encender una luz blanca.' },
-    { n: 'Papilla para drosófilas', c: 'alimento', t: 'Las moscas de la fruta alimentan a crías de geckos y ranas. Con una papilla bien formulada, el cultivo se mantiene sano y constante.' },
-    { n: 'Alimento congelado', c: 'congelado', t: 'El alimento congelado se conserva bien y se ofrece descongelado, sin necesidad de presas vivas.' },
-    { n: 'Latas monoproteicas', c: 'alimento', t: 'Una sola fuente de proteína facilita saber qué le sienta bien a tu animal, y ayuda si tiene la digestión sensible.' },
-    { n: 'Pejerrey liofilizado', c: 'alimento', t: 'El liofilizado conserva el sabor y los nutrientes del pescado sin refrigeración, y el hervido previo lo deja listo para ofrecer.' },
-    { n: 'Incubadoras REPER', c: 'incubacion', t: 'Una temperatura estable decide si un huevo eclosiona. Controla cada grado con nuestras incubadoras.' },
-    { n: 'Insect Protein', c: 'alimento', t: 'Entre 75 y 85 g de proteína por cada 100 g, pensada para apoyar la reproducción.' },
-    { n: 'Insect Food', c: 'alimento', t: '25 alimentos con probióticos, prebióticos, vitaminas y minerales en un solo balanceado.' },
-    { n: 'Ratonina REPER', c: 'alimento', t: 'Granos selectos pelletizados con 19,5 % de proteína para criar ratones bien alimentados.' },
-    { n: 'Larva deshidratada', c: 'alimento', t: 'Proteína de insecto lista para servir y fácil de guardar.' },
-    { n: 'LARCOS', c: 'alimento', t: 'Pellet de mosca soldado para peces ornamentales, con harinas de alta calidad.' },
-    { n: 'Precios REPER', c: 'todo', t: 'Producimos e importamos a granel para que cuidar a tus animales exóticos no sea un lujo.' }
+    { n: 'Calcio', c: 'suplementos', p: 'S/ 80', i: 'calcio', t: 'El calcio mantiene huesos y caparazones fuertes y es clave para que las hembras formen huevos sanos.' },
+    { n: 'Luz UBV Tropical', c: 'luz', p: 'S/ 55', i: 'ubv_gator', t: 'Los reptiles diurnos necesitan luz UVB para producir vitamina D3 y aprovechar el calcio. Dales su sol, incluso bajo techo.' },
+    { n: 'Foco cerámico', c: 'luz', p: 'S/ 45', i: 'calcio', t: 'Emite calor infrarrojo sin luz visible, ideal para mantener la temperatura del terrario también de noche.' },
+    { n: 'Cable térmico', c: 'luz', p: 'S/ 45', i: 'calcio', t: 'Calor desde el sustrato para crear una zona templada en el terrario, sin luz que moleste el descanso.' },
+    { n: 'Luz UVA', c: 'luz', p: 'S/ 45', i: 'ubv_gator', t: 'Una lámpara halógena UVA crea la zona de asoleo, donde tu reptil o tortuga se calienta y se activa.' },
+    { n: 'Bombilla nocturna', c: 'luz', p: 'S/ 45', i: 'ubv_gator', t: 'Con una bombilla nocturna das calor y puedes observar a tu reptil de noche sin encender una luz blanca.' },
+    { n: 'Papilla para drosófilas', c: 'alimento', p: 'S/ 36', i: 'calcio', t: 'Las moscas de la fruta alimentan a crías de geckos y ranas. Con una papilla bien formulada, el cultivo se mantiene sano y constante.' },
+    { n: 'Alimento congelado', c: 'congelado', p: 'S/ 8', i: 'mice', t: 'El alimento congelado se conserva bien y se ofrece descongelado, sin necesidad de presas vivas.' },
+    { n: 'Latas monoproteicas', c: 'alimento', p: 'S/ 25', i: 'calcio', t: 'Una sola fuente de proteína facilita saber qué le sienta bien a tu animal, y ayuda si tiene la digestión sensible.' },
+    { n: 'Pejerrey liofilizado', c: 'alimento', p: 'S/ 40', i: 'calcio', t: 'El liofilizado conserva el sabor y los nutrientes del pescado sin refrigeración, y el hervido previo lo deja listo para ofrecer.' },
+    { n: 'Incubadoras REPER', c: 'incubacion', p: 'S/ 550', i: 'calcio', t: 'Una temperatura estable decide si un huevo eclosiona. Controla cada grado con nuestras incubadoras.' },
+    { n: 'Insect Protein', c: 'alimento', p: 'S/ 65', i: 'calcio', t: 'Entre 75 y 85 g de proteína por cada 100 g, pensada para apoyar la reproducción.' },
+    { n: 'Insect Food', c: 'alimento', p: 'S/ 45', i: 'calcio', t: '25 alimentos con probióticos, prebióticos, vitaminas y minerales en un solo balanceado.' },
+    { n: 'Ratonina REPER', c: 'alimento', p: 'S/ 12', i: 'calcio', t: 'Granos selectos pelletizados con 19,5 % de proteína para criar ratones bien alimentados.' },
+    { n: 'Larva deshidratada', c: 'alimento', p: 'S/ 65', i: 'calcio', t: 'Proteína de insecto lista para servir y fácil de guardar.' },
+    { n: 'LARCOS', c: 'alimento', p: 'S/ 40', i: 'calcio', t: 'Pellet de mosca soldado para peces ornamentales, con harinas de alta calidad.' },
+    { n: 'Precios REPER', c: 'todo', p: 'S/ 12', i: 'calcio', t: 'Producimos e importamos a granel para que cuidar a tus animales exóticos no sea un lujo.' }
 ];
 
 const FE = [
@@ -75,7 +74,6 @@ function showR(i) {
     setTimeout(() => { setR(i); s.classList.remove('out'); }, 350);
 }
 
-// Inicializar dots y eventos del bloque superior
 const rdotsEl = $('rdots');
 if (rdotsEl) {
     rdotsEl.innerHTML = R.map((r, i) => `<button aria-label="${r.n}" data-i="${i}"></button>`).join('');
@@ -100,7 +98,6 @@ if (rb) {
 setInterval(() => { if (!rp && !document.hidden) showR(ri + 1); }, 6500);
 setR(st);
 
-// Alimento congelado
 const FZ = [{
     n: 'Ratón adulto congelado',
     d: 'Ratones adultos de 28 a 32 g cada uno, listos para descongelar y ofrecer.',
@@ -125,30 +122,58 @@ if (fzEl) {
     `).join('');
 }
 
-const wa3 = $('wa3');
-if (wa3) wa3.href = `https://wa.me/${WA}?text=${encodeURIComponent('Hola REPER, quiero consultar por los productos de importación')}`;
-
-const wa0 = $('wa0');
-if (wa0) wa0.href = `https://wa.me/${WA}`;
-
-const wa1 = $('wa1');
-if (wa1) wa1.href = `https://wa.me/${WA}`;
-
-const wa2 = $('wa2');
-if (wa2) wa2.href = `https://wa.me/${WA}`;
-
-// Función simulada de dibujo de catálogo y temas si es requerida por otros scripts o contenedores
 let cat = 'todo';
 function draw() {
-    // Lógica para renderizar catálogo si corresponde
+    const gr = $('gr');
+    if (!gr) return;
+    const items = cat === 'todo' ? PR : PR.filter(p => p.c === cat);
+    gr.innerHTML = items.map(p => `
+        <article class="cd">
+            <div class="ph">
+                <img src="${IMG[p.i] || IMG.calcio}" alt="${p.n}" loading="lazy">
+            </div>
+            <div class="cb">
+                <h3>${p.n}</h3>
+                <p>${p.t}</p>
+                <div class="ft">
+                    <span class="pr">${p.p}</span>
+                    <a class="b s" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent('Hola REPER, quiero consultar por: ' + p.n)}">Pedir</a>
+                </div>
+            </div>
+        </article>
+    `).join('');
 }
+
+const ch = $('ch');
+if (ch) {
+    const categories = [
+        { id: 'todo', label: 'Todo' },
+        { id: 'alimento', label: 'Alimento' },
+        { id: 'suplementos', label: 'Suplementos' },
+        { id: 'luz', label: 'Luz y Calor' },
+        { id: 'incubacion', label: 'Incubación' }
+    ];
+    ch.innerHTML = categories.map(c => `<button class="${c.id === cat ? 'on' : ''}" data-cat="${c.id}">${c.label}</button>`).join('');
+    ch.onclick = e => {
+        if (e.target.dataset.cat) {
+            cat = e.target.dataset.cat;
+            ch.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.cat === cat));
+            draw();
+        }
+    };
+}
+
+const linkText = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+if ($('wa3'))$('wa3').href = linkText('Hola REPER, quiero consultar por los productos de importación');
+if ($('wa0'))$('wa0').href = `https://wa.me/${WA}`;
+if ($('wa1'))$('wa1').href = `https://wa.me/${WA}`;
+if ($('wa2'))$('wa2').href = `https://wa.me/${WA}`;
+
+const kEl = $('k');
+if (kEl) kEl.innerHTML = '<span class="flag"></span> Hecho en Perú';
 
 function setTema(t) {
     document.documentElement.setAttribute('data-tema', t || 'base');
 }
-
-// Configuración inicial de logos e imágenes base
-if ($('lc'))$('lc').src = IMG.logoc;
-if ($('fl'))$('fl').src = IMG.logoc;
-if ($('k'))$('k').innerHTML = '<span class="flag"></span> Hecho en Perú';
 setTema('base');
+draw();
