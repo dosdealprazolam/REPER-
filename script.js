@@ -121,18 +121,20 @@ const FZ = [{
     t: [['1 unidad', 1, 8], ['Pack de 10', 10, 70], ['Pack de 36', 36, 234]]
 }];
 
+const link = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+
 const fzEl = $('fz');
 if (fzEl) {
     fzEl.innerHTML = FZ.map(p => `
         <article class="fz">
-            <img src="${IMG[p.i]}" alt="${p.n}" loading="lazy">
+            <img src="${IMG[p.i] || 'img/placeholder.png'}" alt="${p.n}" loading="lazy">
             <div class="fb">
                 <h3>${p.n}</h3>
                 <p>${p.d}</p>
                 <ul class="tr">
                     ${p.t.map(([a, q, b]) => `<li><span>${a}${q > 1 ? `<small>S/ ${(b / q).toFixed(2)} cada uno</small>` : ''}</span><b>S/ ${b}</b></li>`).join('')}
                 </ul>
-                <div><a class="b" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent('Hola REPER, quiero consultar por: ' + p.n)}">Pedir</a></div>
+                <div><a class="b" target="_blank" rel="noopener" href="${link('Hola REPER, quiero consultar por: ' + p.n)}">Pedir</a></div>
             </div>
         </article>
     `).join('');
@@ -152,8 +154,8 @@ function draw() {
                 <h3>${p.n}</h3>
                 <p>${p.t}</p>
                 <div class="ft">
-                    <span class="pr">${p.p}</span>
-                    <a class="b s" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent('Hola REPER, quiero consultar por: ' + p.n)}">Pedir</a>
+                    <span class="pr">${p.p || 'S/ 0'}</span>
+                    <a class="b s" target="_blank" rel="noopener" href="${link('Hola REPER, quiero consultar por: ' + p.n)}">Pedir</a>
                 </div>
             </div>
         </article>
@@ -179,11 +181,10 @@ if (ch) {
     };
 }
 
-const linkText = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
-if ($('wa3'))$('wa3').href = linkText('Hola REPER, quiero consultar por los productos de importación');
-if ($('wa0'))$('wa0').href = `https://wa.me/${WA}`;
-if ($('wa1'))$('wa1').href = `https://wa.me/${WA}`;
-if ($('wa2'))$('wa2').href = `https://wa.me/${WA}`;
+if ($('wa3'))$('wa3').href = link('Hola REPER, quiero consultar por los productos de importación');
+if ($('wa0'))$('wa0').href = link('Hola REPER, quiero hacer un pedido');
+if ($('wa1'))$('wa1').href = link('Hola REPER, quiero hacer un pedido');
+if ($('wa2'))$('wa2').href = link('Hola REPER, quiero hacer un pedido');
 
 const kEl = $('k');
 if (kEl) kEl.innerHTML = '<span class="flag"></span> Hecho en Perú';
