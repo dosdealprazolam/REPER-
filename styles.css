@@ -67,7 +67,6 @@ h2{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800}
 
 .ft{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;border-top:1px solid var(--ln);padding-top:14px}
 .pr{font-size:1.5rem;font-weight:800;color:var(--ac)}
-.pr small{font:500 .8rem Figtree,sans-serif;color:var(--mu);display:block}
 
 .ug{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:560px}
 .ug img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:16px;display:block}
