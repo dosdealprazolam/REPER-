@@ -24,14 +24,14 @@ const PR = [
     { n: 'Calcio', c: 'suplementos', p: 'S/ 80', i: 'calcio', t: 'El calcio mantiene huesos y caparazones fuertes y es clave para que las hembras formen huevos sanos.' },
     { n: 'Luz UBV Tropical', c: 'luz', p: 'S/ 55', i: 'luz_ubv', t: 'Los reptiles diurnos necesitan luz UVB para producir vitamina D3 y aprovechar el calcio. Dales su sol, incluso bajo techo.' },
     { n: 'Foco cerámico', c: 'luz', p: 'S/ 45', i: 'foco_ceramico', t: 'Emite calor infrarrojo sin luz visible, ideal para mantener la temperatura del terrario también de noche.' },
-    { n: 'Cable térmico', c: 'luz', p: 'S/ 65', i: 'cable_termico', t: 'Calor desde el sustrato para crear una zona templada en el terrario, sin luz que moleste el descanso.' },
+    { n: 'Cable térmico', c: 'luz', p: 'S/ 45', i: 'cable_termico', t: 'Calor desde el sustrato para crear una zona templada en el terrario, sin luz que moleste el descanso.' },
     { n: 'Luz UVA', c: 'luz', p: 'S/ 45', i: 'luz_uva', t: 'Una lámpara halógena UVA crea la zona de asoleo, donde tu reptil o tortuga se calienta y se activa.' },
     { n: 'Bombilla nocturna', c: 'luz', p: 'S/ 45', i: 'bombilla_nocturna', t: 'Con una bombilla nocturna das calor y puedes observar a tu reptil de noche sin encender una luz blanca.' },
     { n: 'Papilla para drosófilas', c: 'alimento', p: 'S/ 36', i: 'papilla_drosofilas', t: 'Las moscas de la fruta alimentan a crías de geckos y ranas. Con una papilla bien formulada, el cultivo se mantiene sano y constante.' },
-    { n: 'Alimento congelado', c: 'alimento', p: 'S/ 8', i: 'alimento_congelado', t: 'El alimento congelado se conserva bien y se ofrece descongelado, sin necesidad de presas vivas.' },
-    { n: 'Latas monoproteicas', c: 'alimento', p: 'S/ 35', i: 'latas_monoproteicas', t: 'Una sola fuente de proteína facilita saber qué le sienta bien a tu animal, y ayuda si tiene la digestión sensible.' },
+    { n: 'Alimento congelado', c: 'congelado', p: 'S/ 8', i: 'alimento_congelado', t: 'El alimento congelado se conserva bien y se ofrece descongelado, sin necesidad de presas vivas.' },
+    { n: 'Latas monoproteicas', c: 'alimento', p: 'S/ 25', i: 'latas_monoproteicas', t: 'Una sola fuente de proteína facilita saber qué le sienta bien a tu animal, y ayuda si tiene la digestión sensible.' },
     { n: 'Pejerrey liofilizado', c: 'alimento', p: 'S/ 40', i: 'pejerrey_liofilizado', t: 'El liofilizado conserva el sabor y los nutrientes del pescado sin refrigeración, y el hervido previo lo deja listo para ofrecer.' },
-    { n: 'Incubadoras REPER 220v', c: 'incubacion', p: 'S/ 750', i: 'incubadora_reper', t: 'Una temperatura estable decide si un huevo eclosiona. Controla cada grado con nuestras incubadoras.' },
+    { n: 'Incubadoras REPER', c: 'incubacion', p: 'S/ 550', i: 'incubadora_reper', t: 'Una temperatura estable decide si un huevo eclosiona. Controla cada grado con nuestras incubadoras.' },
     { n: 'Insect Protein', c: 'alimento', p: 'S/ 65', i: 'insect_protein', t: 'Entre 75 y 85 g de proteína por cada 100 g, pensada para apoyar la reproducción.' },
     { n: 'Insect Food', c: 'alimento', p: 'S/ 45', i: 'insect_food', t: '25 alimentos con probióticos, prebióticos, vitaminas y minerales en un solo balanceado.' },
     { n: 'Ratonina REPER', c: 'alimento', p: 'S/ 12', i: 'ratonina_reper', t: 'Granos selectos pelletizados con 19,5 % de proteína para criar ratones bien alimentados.' },
@@ -58,26 +58,30 @@ const CU = [
 ];
 
 const R = [];
-for (let i = 0; i < 17; i++) [PR, FE, CU].forEach(a => a[i] && R.push(a[i]));
+[PR, FE, CU].forEach(a => a.forEach(item => R.push(item)));
 
-const now = new Date(), t0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-const dl = r => {
-    const x = (new Date(now.getFullYear(), r.m - 1, r.d) - t0) / 864e5;
-    return Math.round(x < 0 ? x + 365 : x);
-};
+// Lista de imágenes festivas de ejemplo (puedes agregar más en img/festivo/1.png, 2.png, etc.)
+const FESTIVO_IMGS = [
+    'img/festivo/1.png',
+    'img/festivo/2.png',
+    'img/festivo/3.png'
+];
 
-let st = 0, best = 11;
-R.forEach((r, i) => { if (r.m && dl(r) < best) { best = dl(r); st = i; } });
-
-let ri = 0, rp = false;
+let ri = Math.floor(Math.random() * R.length), rp = false;
 const rm = matchMedia('(prefers-reduced-motion:reduce)').matches;
 
 function setR(i) {
     ri = (i + R.length) % R.length;
-    $('rn').textContent = (R[ri].m && dl(R[ri]) == 0 ? 'Hoy, ' : '') + R[ri].n;
+    $('rn').textContent = R[ri].n;
     $('rv').style.display = R[ri].c ? '' : 'none';
     $('rx').textContent = R[ri].t;
-    document.querySelectorAll('#rdots button').forEach((b, j) => b.classList.toggle('on', j == ri));
+    
+    // Seleccionar aleatoriamente una imagen de fondo difuminada de la carpeta festivo/
+    const randomFestImg = FESTIVO_IMGS[Math.floor(Math.random() * FESTIVO_IMGS.length)];
+    const rtBg = $('rtBg');
+    if (rtBg) {
+        rtBg.style.backgroundImage = `url('${randomFestImg}')`;
+    }
 }
 
 function showR(i) {
@@ -87,18 +91,12 @@ function showR(i) {
     setTimeout(() => { setR(i); s.classList.remove('out'); }, 350);
 }
 
-const rdotsEl = $('rdots');
-if (rdotsEl) {
-    rdotsEl.innerHTML = R.map((r, i) => `<button aria-label="${r.n}" data-i="${i}"></button>`).join('');
-    rdotsEl.onclick = e => { if (e.target.dataset.i !== undefined) showR(+e.target.dataset.i); };
-}
-
 const rvEl = $('rv');
 if (rvEl) {
     rvEl.onclick = () => {
         const c = R[ri].c, b = { behavior: rm ? 'auto' : 'smooth' };
         if (c == 'congelado') $('congelado').scrollIntoView(b);
-        else { cat = c; draw(); $('catalogo').scrollIntoView(b); }
+        else { cat = c || 'todo'; draw(); $('catalogo').scrollIntoView(b); }
     };
 }
 
@@ -108,10 +106,14 @@ if (rb) {
     rb.onmouseleave = rb.onfocusout = () => rp = false;
 }
 
-setInterval(() => { if (!rp && !document.hidden) showR(ri + 1); }, 6500);
-setR(st);
+setInterval(() => { 
+    if (!rp && !document.hidden) {
+        showR(Math.floor(Math.random() * R.length));
+    } 
+}, 6500);
+setR(ri);
 
-// Carrusel automático del Hero con texto dinámico sincronizado
+// Carrusel automático del Hero
 const carouselImages = document.querySelectorAll('.hero-carousel img.carousel-img');
 const badgeTextEl = document.getElementById('heroBadgeText');
 
@@ -195,6 +197,17 @@ if (ch) {
     };
 }
 
+// Evento para los clics en las imágenes de Luz UBV para llevar al catálogo filtrado en Luz y Calor
+document.querySelectorAll('.ubv-link').forEach(linkEl => {
+    linkEl.onclick = e => {
+        e.preventDefault();
+        cat = 'luz';
+        ch.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.cat === 'luz'));
+        draw();
+        $('catalogo').scrollIntoView({ behavior: rm ? 'auto' : 'smooth' });
+    };
+});
+
 if ($('wa3'))$('wa3').href = link('Hola REPER, quiero consultar por los productos de importación');
 if ($('wa0'))$('wa0').href = link('Hola REPER, quiero hacer un pedido');
 if ($('wa1'))$('wa1').href = link('Hola REPER, quiero hacer un pedido');
@@ -222,3 +235,13 @@ if (sw) {
 const savedTema = localStorage.getItem('reper_tema') || 'base';
 setTema(savedTema);
 draw();
+
+// Control del botón flotante "Volver arriba"
+const scrollTopBtn = $('scrollTopBtn');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+});
