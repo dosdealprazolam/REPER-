@@ -1,4 +1,4 @@
-const $ = i => document.getElementById(i), WA = '51967629555';
+|const $ = i => document.getElementById(i), WA = '51967629555';
 
 const IMG = {
     calcio: 'img/calcio.png',
@@ -28,7 +28,7 @@ const PR = [
     { n: 'Luz UVA', c: 'luz', p: 'S/ 45', i: 'luz_uva', t: 'Una lámpara halógena UVA crea la zona de asoleo, donde tu reptil o tortuga se calienta y se activa.' },
     { n: 'Bombilla nocturna', c: 'luz', p: 'S/ 45', i: 'bombilla_nocturna', t: 'Con una bombilla nocturna das calor y puedes observar a tu reptil de noche sin encender una luz blanca.' },
     { n: 'Papilla para drosófilas', c: 'alimento', p: 'S/ 36', i: 'papilla_drosofilas', t: 'Las moscas de la fruta alimentan a crías de geckos y ranas. Con una papilla bien formulada, el cultivo se mantiene sano y constante.' },
-    { n: 'Alimento congelado', c: 'congelado', p: 'S/ 8', i: 'alimento_congelado', t: 'El alimento congelado se conserva bien y se ofrece descongelado, sin necesidad de presas vivas.' },
+    { n: 'Alimento congelado', c: 'alimento', p: 'S/ 8', i: 'alimento_congelado', t: 'El alimento congelado se conserva bien y se ofrece descongelado, sin necesidad de presas vivas.' },
     { n: 'Latas monoproteicas', c: 'alimento', p: 'S/ 35', i: 'latas_monoproteicas', t: 'Una sola fuente de proteína facilita saber qué le sienta bien a tu animal, y ayuda si tiene la digestión sensible.' },
     { n: 'Pejerrey liofilizado', c: 'alimento', p: 'S/ 40', i: 'pejerrey_liofilizado', t: 'El liofilizado conserva el sabor y los nutrientes del pescado sin refrigeración, y el hervido previo lo deja listo para ofrecer.' },
     { n: 'Incubadoras REPER 220v', c: 'incubacion', p: 'S/ 750', i: 'incubadora_reper', t: 'Una temperatura estable decide si un huevo eclosiona. Controla cada grado con nuestras incubadoras.' },
