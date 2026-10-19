@@ -1,4 +1,4 @@
-|const $ = i => document.getElementById(i), WA = '51967629555';
+const $ = i => document.getElementById(i), WA = '51967629555';
 
 const IMG = {
     calcio: 'img/calcio.png',
