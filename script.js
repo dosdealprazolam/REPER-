@@ -17,7 +17,10 @@ const IMG = {
     ratonina_reper: 'img/ratonina_reper.png',
     larva_deshidratada: 'img/larva_deshidratada.png',
     larcos: 'img/larcos.png',
-    mice: 'img/mice_congelado.png'
+    mice: 'img/mice_congelado.png',
+    incubadora_mediana:'img/incubadora_mediana.png',
+    incubadora_pequena:'img/incubadora_pequena.png'
+
 };
 
 const PR = [
@@ -37,6 +40,8 @@ const PR = [
     { n: 'Ratonina REPER', c: 'alimento', p: 'S/ 12', i: 'ratonina_reper', t: 'Granos selectos pelletizados con 19,5 % de proteína para criar ratones bien alimentados.' },
     { n: 'Larva deshidratada', c: 'alimento', p: 'S/ 65', i: 'larva_deshidratada', t: 'Proteína de insecto lista para servir y fácil de guardar.' },
     { n: 'LARCOS', c: 'alimento', p: 'S/ 40', i: 'larcos', t: 'Pellet de mosca soldado para peces ornamentales, con harinas de alta calidad.' },
+    { n: 'incubadora mediana', c: 'incubacion', p: 's/550', i: 'incubadora_mediana', t: 'Incubadora mediana con control de temperatura y humedad, ideal para incubar huevos de reptiles y aves.' },
+    { n: 'incubadora pequeña', c:'incubacion', p: 'S/350', i:'incubadora_pequena', t:'de la pequeña:  Incubadora automática de 18 huevos con pantalla LED, tapa transparente, volteo automático y control digital de temperatura. Compacta y fácil de usar'},
 ];
 
 const FE = [
