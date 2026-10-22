@@ -19,7 +19,8 @@ const IMG = {
     larcos: 'img/larcos.png',
     mice: 'img/mice_congelado.png',
     incubadora_mediana:'img/incubadora_mediana.png',
-    incubadora_pequena:'img/incubadora_pequena.png'
+    incubadora_pequena:'img/incubadora_pequena.png',
+    colageno_hidrolizado: 'img/colageno_hidrolizado.png',
 
 };
 
@@ -42,6 +43,7 @@ const PR = [
     { n: 'LARCOS', c: 'alimento', p: 'S/ 40', i: 'larcos', t: 'Pellet de mosca soldado para peces ornamentales, con harinas de alta calidad.' },
     { n: 'incubadora mediana', c: 'incubacion', p: 's/550', i: 'incubadora_mediana', t: 'Incubadora mediana con control de temperatura y humedad, ideal para incubar huevos de reptiles y aves.' },
     { n: 'incubadora pequeña', c:'incubacion', p: 'S/350', i:'incubadora_pequena', t:'de la pequeña:  Incubadora automática de 18 huevos con pantalla LED, tapa transparente, volteo automático y control digital de temperatura. Compacta y fácil de usar'},
+    { n: 'Colágeno hidrolizado', c: 'suplementos', p: 'S/ 80', i: 'colageno_hidrolizado', t: 'El colágeno es una proteína esencial para la salud de la piel, articulaciones y tejidos conectivos de los reptiles. Nuestro colágeno hidrolizado es de alta calidad y fácil de digerir.' },
 ];
 
 const FE = [
