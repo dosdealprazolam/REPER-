@@ -21,6 +21,9 @@ const IMG = {
     incubadora_mediana:'img/incubadora_mediana.png',
     incubadora_pequena:'img/incubadora_pequena.png',
     colageno_hidrolizado: 'img/colageno_hidrolizado.png',
+    soldado_alimento: 'img/soldado_alimento.png',
+    runner_comida: 'img/runner_comida.png',
+    lobster_alimento: 'img/lobster_alimento.png',
 
 };
 
@@ -41,9 +44,15 @@ const PR = [
     { n: 'Ratonina REPER', c: 'alimento', p: 'S/ 12', i: 'ratonina_reper', t: 'Granos selectos pelletizados con 19,5 % de proteína para criar ratones bien alimentados.' },
     { n: 'Larva deshidratada', c: 'alimento', p: 'S/ 65', i: 'larva_deshidratada', t: 'Proteína de insecto lista para servir y fácil de guardar.' },
     { n: 'LARCOS', c: 'alimento', p: 'S/ 40', i: 'larcos', t: 'Pellet de mosca soldado para peces ornamentales, con harinas de alta calidad.' },
-    { n: 'incubadora mediana', c: 'incubacion', p: 's/550', i: 'incubadora_mediana', t: 'Incubadora mediana con control de temperatura y humedad, ideal para incubar huevos de reptiles y aves.' },
-    { n: 'incubadora pequeña', c:'incubacion', p: 'S/350', i:'incubadora_pequena', t:'de la pequeña:  Incubadora automática de 18 huevos con pantalla LED, tapa transparente, volteo automático y control digital de temperatura. Compacta y fácil de usar'},
+    { n: 'incubadora mediana', c: 'incubacion', p: 'S/ 550', i: 'incubadora_mediana', t: 'Incubadora mediana con control de temperatura y humedad, ideal para incubar huevos de reptiles y aves.' },
+    { n: 'incubadora pequeña', c:'incubacion', p: 'S/ 350', i:'incubadora_pequena', t:'de la pequeña:  Incubadora automática de 18 huevos con pantalla LED, tapa transparente, volteo automático y control digital de temperatura. Compacta y fácil de usar'},
     { n: 'Colágeno hidrolizado', c: 'suplementos', p: 'S/ 80', i: 'colageno_hidrolizado', t: 'El colágeno es una proteína esencial para la salud de la piel, articulaciones y tejidos conectivos de los reptiles. Nuestro colágeno hidrolizado es de alta calidad y fácil de digerir.' },
+   
+    //alimento vivo
+
+    { n: 'Larva de mosca soldado', c: 'alimento_vivo', p: 'S/ 35', i: 'soldado_alimento', t: 'Las larvas de mosca Larvas vivas de mosca soldado (Hermetia illucens), alimento vivo para reptiles, anfibios, aves y peces. La porción completa trae 1000 larvas; también en 1/2 porción (500) y en 1/4 de porción (aprox. 250). son una excelente fuente de proteína y calcio para reptiles y aves. Son fáciles de criar y mantener, y proporcionan un alimento vivo nutritivo y sostenible.' },
+    { n: 'Cucaracha Red Runner', c: 'alimento_vivo', p: 'S/ 30', i: 'runner_comida', t: 'Las cucarachas Red RunnCucaracha red runner (Shelfordella lateralis), alimento vivo para reptiles, anfibios y otros insectívoros. Elige la talla.er son un alimento vivo ideal para reptiles y anfibios. Son fáciles de criar y proporcionan una fuente rica en proteínas y nutrientes esenciales.' },
+    { n: 'Cucaracha Lobster', c: 'alimento_vivo', p: 'S/ 25', i: 'lobster_alimento', t: 'Las cucarachas Lobster son un alimento vivo ideal para Cucaracha lobster (Nauphoeta cinerea), alimento vivo para reptiles, anfibios y otros insectívoros. Elige la talla.reptiles y anfibios. Son fáciles de criar y proporcionan una fuente rica en proteínas y nutrientes esenciales.' }
 ];
 
 const FE = [
@@ -192,7 +201,8 @@ if (ch) {
         { id: 'alimento', label: 'Alimento' },
         { id: 'suplementos', label: 'Suplementos' },
         { id: 'luz', label: 'Luz y Calor' },
-        { id: 'incubacion', label: 'Incubación' }
+        { id: 'incubacion', label: 'Incubación' },
+        { id: 'alimento_vivo', label: 'Alimento Vivo' },
     ];
     ch.innerHTML = categories.map(c => `<button class="${c.id === cat ? 'on' : ''}" data-cat="${c.id}">${c.label}</button>`).join('');
     ch.onclick = e => {
