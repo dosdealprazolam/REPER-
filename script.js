@@ -35,7 +35,7 @@ const PR = [
     { n: 'Alimento congelado', c: 'congelado', p: 'S/ 8', i: 'alimento_congelado', t: 'El alimento congelado se conserva bien y se ofrece descongelado, sin necesidad de presas vivas.' },
     { n: 'Latas monoproteicas', c: 'alimento', p: 'S/ 25', i: 'latas_monoproteicas', t: 'Una sola fuente de proteína facilita saber qué le sienta bien a tu animal, y ayuda si tiene la digestión sensible.' },
     { n: 'Pejerrey liofilizado', c: 'alimento', p: 'S/ 40', i: 'pejerrey_liofilizado', t: 'El liofilizado conserva el sabor y los nutrientes del pescado sin refrigeración, y el hervido previo lo deja listo para ofrecer.' },
-    { n: 'Incubadoras REPER', c: 'incubacion', p: 'S/ 550', i: 'incubadora_reper', t: 'Una temperatura estable decide si un huevo eclosiona. Controla cada grado con nuestras incubadoras.' },
+    { n: 'Incubadoras REPER', c: 'incubacion', p: 'S/ 750', i: 'incubadora_reper', t: 'Una temperatura estable decide si un huevo eclosiona. Controla cada grado con nuestras incubadoras.' },
     { n: 'Insect Protein', c: 'alimento', p: 'S/ 65', i: 'insect_protein', t: 'Entre 75 y 85 g de proteína por cada 100 g, pensada para apoyar la reproducción.' },
     { n: 'Insect Food', c: 'alimento', p: 'S/ 45', i: 'insect_food', t: '25 alimentos con probióticos, prebióticos, vitaminas y minerales en un solo balanceado.' },
     { n: 'Ratonina REPER', c: 'alimento', p: 'S/ 12', i: 'ratonina_reper', t: 'Granos selectos pelletizados con 19,5 % de proteína para criar ratones bien alimentados.' },
