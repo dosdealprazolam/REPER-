@@ -51,7 +51,7 @@ const PR = [
     //alimento vivo
 
     { n: 'Larva de mosca soldado', c: 'alimento_vivo', p: 'S/ 35', i: 'soldado_alimento', t: 'Las larvas de mosca Larvas vivas de mosca soldado (Hermetia illucens), alimento vivo para reptiles, anfibios, aves y peces. La porción completa trae 1000 larvas; también en 1/2 porción (500) y en 1/4 de porción (aprox. 250). son una excelente fuente de proteína y calcio para reptiles y aves. Son fáciles de criar y mantener, y proporcionan un alimento vivo nutritivo y sostenible.' },
-    { n: 'Cucaracha Red Runner', c: 'alimento_vivo', p: 'S/ 30', i: 'runner_comida', t: 'Las cucarachas Red RunnCucaracha red runner (Shelfordella lateralis), alimento vivo para reptiles, anfibios y otros insectívoros. Elige la talla.er son un alimento vivo ideal para reptiles y anfibios. Son fáciles de criar y proporcionan una fuente rica en proteínas y nutrientes esenciales.' },
+    { n: 'Cucaracha Red Runner', c: 'alimento_vivo', p: 'S/ 30', i: 'runner_comida', t: 'Las cucarachas red runner (Shelfordella lateralis), alimento vivo para reptiles, anfibios y otros insectívoros. Elige la talla.er son un alimento vivo ideal para reptiles y anfibios. Son fáciles de criar y proporcionan una fuente rica en proteínas y nutrientes esenciales.' },
     { n: 'Cucaracha Lobster', c: 'alimento_vivo', p: 'S/ 25', i: 'lobster_alimento', t: 'Las cucarachas Lobster son un alimento vivo ideal para Cucaracha lobster (Nauphoeta cinerea), alimento vivo para reptiles, anfibios y otros insectívoros. Elige la talla.reptiles y anfibios. Son fáciles de criar y proporcionan una fuente rica en proteínas y nutrientes esenciales.' }
 ];
 
@@ -199,10 +199,11 @@ if (ch) {
     const categories = [
         { id: 'todo', label: 'Todo' },
         { id: 'alimento', label: 'Alimento' },
+        { id: 'alimento_vivo', label: 'Alimento Vivo' },
         { id: 'suplementos', label: 'Suplementos' },
         { id: 'luz', label: 'Luz y Calor' },
         { id: 'incubacion', label: 'Incubación' },
-        { id: 'alimento_vivo', label: 'Alimento Vivo' },
+       
     ];
     ch.innerHTML = categories.map(c => `<button class="${c.id === cat ? 'on' : ''}" data-cat="${c.id}">${c.label}</button>`).join('');
     ch.onclick = e => {
